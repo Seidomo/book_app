@@ -17,13 +17,17 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/hello', sayingHello);
+app.get('/search', newSearch);
+
+
 
 function sayingHello(req, res){
-   
     res.render('pages/index.ejs' );
 }
 
-
+function newSearch(req, res){
+    res.render('pages/searches/new.ejs' );
+}
 
 
 
