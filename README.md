@@ -29,6 +29,8 @@ PORT = 3001
 
 ### Resources
 * https://www.w3schools.com/tags/att_input_type_radio.asp
+* https://developers.google.com/books/docs/v1/using
+* 
 
 ## Time Estimates
 
@@ -45,10 +47,13 @@ PORT = 3001
 * Finish time: 5:00 pm
 * Actual time needed to complete: 20min
 
-## Number and name of feature: 
-* Estimate of time needed to complete: 
+## Number and name of feature: Story 3
+* Estimate of time needed to complete: 90min
+* Start time: 5:10pm
+* Finish time: 6:45pm
 * Start time: 
-* Finish time: 
+* Finish time:
+
 * Actual time needed to complete: 
 
 ## Number and name of feature: 
