@@ -26,6 +26,9 @@ PORT = 3001
 * 12/15/2020 4:00pm - Story 3 complete, search items populating to page
 * 12/15/2020 4:00pm - Story 6 complete, index.html loading
 
+### Lab 12
+* 12/14/2020 4:30pm - 
+
 ## Credits and Collaborations
 
 ### Resources
@@ -68,7 +71,12 @@ PORT = 3001
 * Finish time: 4:50pm
 * Actual time needed to complete: 10min
 
-
+## Lab 12
+## Number and name of feature: Story 1: Database
+* Estimate of time needed to complete: 2hr
+* Start time: 4:30
+* Finish time: 
+* Actual time needed to complete: 
 
 
 
