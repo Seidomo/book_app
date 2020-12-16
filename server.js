@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 
-app.get('/hello', sayingHello);
+app.get('/', sayingHello);
 app.get('/search', newSearch);
 app.post('/searches/new', searching);
 
@@ -46,7 +46,7 @@ if (req.body.search[1] === 'author') {
     
 }
 console.log(searchTerm, searchType);
-const bookSearchURL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}+${searchType}`
+const bookSearchURL = `https://www.googleapis.com/books/v1/volumes?q=${searchType}+${searchTerm}`
 
     return superagent.get(bookSearchURL)
         .then(bookSearchReturn => {

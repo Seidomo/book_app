@@ -22,8 +22,9 @@ PORT = 3001
 ## Change Log
 ### Lab 11
 * 12/14/2020 4:30pm - Story 1 complete, server functioning
-* 12/14/2020: 5:00pm - Story 2 complete, new.ejs built
-
+* 12/14/2020 5:00pm - Story 2 complete, new.ejs built
+* 12/15/2020 4:00pm - Story 3 complete, search items populating to page
+* 12/15/2020 4:00pm - Story 6 complete, index.html loading
 
 ## Credits and Collaborations
 
@@ -41,6 +42,12 @@ PORT = 3001
 * Finish time: 4:30
 * Actual time needed to complete: 2 hr
 
+## Number and name of feature: 4
+* Estimate of time needed to complete: 5 minutes
+* Start time: 2:50
+* Finish time: 2:55
+* Actual time needed to complete: 5min
+
 ## Number and name of feature: Story 2
 * Estimate of time needed to complete: 45min
 * Start time: 4:40pm
@@ -53,14 +60,15 @@ PORT = 3001
 * Finish time: 6:45pm
 * Start time: 2:30
 * Finish time: 4:00
+* Actual time needed to complete: 3hr
 
-* Actual time needed to complete: 
+## Number and name of feature: Story 6
+* Estimate of time needed to complete: 15min
+* Start time: 4:40pm
+* Finish time: 4:50pm
+* Actual time needed to complete: 10min
 
-## Number and name of feature: 
-* Estimate of time needed to complete: 
-* Start time: 
-* Finish time: 
-* Actual time needed to complete: 
+
 
 
 
