@@ -51,8 +51,8 @@ PORT = 3001
 * Estimate of time needed to complete: 90min
 * Start time: 5:10pm
 * Finish time: 6:45pm
-* Start time: 
-* Finish time:
+* Start time: 2:30
+* Finish time: 4:00
 
 * Actual time needed to complete: 
 

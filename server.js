@@ -4,7 +4,6 @@
 const express = require('express');
 const superagent = require('superagent');
 const cors = require('cors');
-const axios = require('axios');
 require('dotenv').config();
 const app = express();
 
@@ -12,13 +11,14 @@ const PORT = process.env.PORT || 3001;
 
 
 
-// https://www.googleapis.com/books/v1/volumes?q= (search)
+
+
 
 app.use(cors());
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended: true}));
-// app.use(axios());
 app.set('view engine', 'ejs');
+
 
 app.get('/hello', sayingHello);
 app.get('/search', newSearch);
@@ -35,27 +35,37 @@ function newSearch(req, res){
 
 function searching(req, res) {
 console.log(req.body);
+
 let searchType;
-const searchTerm = req.body[0];
-if (req.body[1] === 'author') {
+const searchTerm = req.body.search[0];
+if (req.body.search[1] === 'author') {
     searchType = 'inauthor';
 } else {
-    req.body[1] === 'title' 
+    
     searchType = 'intitle';
+    
 }
+console.log(searchTerm, searchType);
 const bookSearchURL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}+${searchType}`
 
     return superagent.get(bookSearchURL)
         .then(bookSearchReturn => {
-/*             let bookSearchArray = bookSearchReturn.body. */
-console.log(bookSearchReturn.body.title)
+          const bookSearchArray = bookSearchReturn.body.items.map(instanceBook => new Book(instanceBook));
+       
+         res.render('pages/searches/show',{bookSearchArray : bookSearchArray});
         })
 }
 
 
 
 
-
+function Book(books){
+    this.title = books.volumeInfo.title;
+    this.authors = books.volumeInfo.authors;
+    this.description = books.volumeInfo.description;
+    /////// got this from the code review /////
+    this.imageUrl = books.volumeInfo.imageLinks ? books.volumeInfo.imageLinks.thumbnail : 'https://i.imgur.com/J5LVHEL.jpg';
+}
 
 
 
