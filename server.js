@@ -34,18 +34,13 @@ function homePage(req, res) {
     client.query('SELECT * FROM books')
           .then(result => {
               let savedBooks = result.rows;
-              
-               res.render('pages/index.ejs',{nsBooks: savedBooks}, {bookCount : savedBooks.length});
-               
-
+               res.render('pages/index.ejs',{nsBooks: savedBooks});
             })
-    
 }
+
 function sayingHello(req, res){
     res.render('pages/index.ejs');
 }
-// function showError(req, res){
-//     res.status(404).render('pages/error.ejs');}
 
 
 function newSearch(req, res) {
