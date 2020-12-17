@@ -27,7 +27,7 @@ app.get('/', homePage);
 app.get('/hello', sayingHello);
 app.get('/searches/new', newSearch);
 app.get('/books/:id', bookDetails);
-app.post('/search', searching);
+app.post('/searches/new', searching);
 
 
 function homePage(req, res) {
@@ -46,11 +46,15 @@ function sayingHello(req, res){
 function newSearch(req, res) {
     res.render('pages/searches/new.ejs');
 }
+
+
+
 function bookDetails(req, res){
     client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
           .then(result => {
-              let booksInDetail = result.rows[0]
-              res.render('pages/books/detail.ejs', {nsBooks : booksInDetail });
+              let booksInDetail = result.rows[0];
+              console.log(result.rows);
+              res.render('pages/books/detail.ejs', {book : booksInDetail });
           })
 
     
@@ -58,15 +62,6 @@ function bookDetails(req, res){
 }
 
 function searching(req, res) {
-    console.log(req.body);
-    const bookSearchURL = `https://www.googleapis.com/books/v1/volumes?q=${searchType}+${searchTerm}`
-    superagent.get(bookSearchURL)
-        .then(bookSearchReturn => {
-            const bookSearchArray = bookSearchReturn.body.items.map(instanceBook => new Book(instanceBook));
-
-            res.render('pages/searches/show', { bookSearchArray: bookSearchArray })
-        })
-
     let searchType;
     const searchTerm = req.body.search[0];
     if (req.body.search[1] === 'author') {
@@ -74,10 +69,16 @@ function searching(req, res) {
     } else {
         searchType = 'intitle';
     }
+    console.log(req.body);
+    const bookSearchURL = `https://www.googleapis.com/books/v1/volumes?q=${searchType}:${searchTerm}`
+    superagent.get(bookSearchURL)
+        .then(bookSearchReturn => {
+            const bookSearchArray = bookSearchReturn.body.items.map(instanceBook => new Book(instanceBook));
+            console.log(bookSearchArray);
 
-    
+            res.render('pages/searches/show', { bookSearchArray: bookSearchArray })
+        })
 }
-
 
 
 function Book(books) {
