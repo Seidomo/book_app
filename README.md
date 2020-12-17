@@ -27,7 +27,8 @@ PORT = 3001
 * 12/15/2020 4:00pm - Story 6 complete, index.html loading
 
 ### Lab 12
-* 12/14/2020 4:30pm - 
+* 12/16/2020 5:30pm - Story 1 Complete
+* 12/16/2020 6:30pm - Story 2 Complete - single book view
 
 ## Credits and Collaborations
 
@@ -75,15 +76,21 @@ PORT = 3001
 ## Number and name of feature: Story 1: Database
 * Estimate of time needed to complete: 2hr
 * Start time: 4:30
-* Finish time: 
+* Finish time: 8:30
 * Actual time needed to complete: 
 
 ## Lab 12
 ## Number and name of feature: Story 1: Database
 * Estimate of time needed to complete: 2hr
 * Start time: 2:00
-* Finish time: 4:30
-* Actual time needed to complete: 
+* Finish time: 5:30
+* Actual time needed to complete: 6.5hrs
+
+## Number and name of feature: Story 2: Single Book
+* Estimate of time needed to complete: 1 hr
+* Start time: 6:00
+* Finish time: 6:30
+* Actual time needed to complete: 30 min
 
 
 
