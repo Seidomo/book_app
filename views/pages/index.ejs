@@ -9,6 +9,21 @@
 <body>
     <h1>BOOKS</h1>
     <a href="/search"> Click here to search for books!</a>
+    <%console.log('front end console log', nsBooks);%>
+    <%console.log('front end book count', savedBooks.length);%>
+
+    <ul>
+        <% nsBooks.forEach(book =>{ %>
+            <li>
+                <h2><%=book.title%> </h2>
+                <h2><%=book.authors%></h2>
+                <img src="<%=book.imageUrl%>" alt="book cover">
+                <p><%=book.description%></p>
+            </li>
+            
+        <%})%>
+        
+    </ul>
 </body>
 
 </html>

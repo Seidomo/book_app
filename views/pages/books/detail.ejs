@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+</head>
+<body>
+    <% nsBooks.forEach(book =>{ %>
+        <li>
+            <h2><%=book.title%> </h2>
+            <h2><%=book.authors%></h2>
+            <img src="<%=book.imageUrl%>" alt="book cover">
+            <p><%=book.description%></p>
+        </li>
+        
+    <%})%>
+</body>
+</html>

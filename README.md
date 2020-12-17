@@ -78,6 +78,14 @@ PORT = 3001
 * Finish time: 
 * Actual time needed to complete: 
 
+## Lab 12
+## Number and name of feature: Story 1: Database
+* Estimate of time needed to complete: 2hr
+* Start time: 2:00
+* Finish time: 4:30
+* Actual time needed to complete: 
+
+
 
 
 ## Assignment Overview
