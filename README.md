@@ -29,12 +29,14 @@ PORT = 3001
 ### Lab 12
 * 12/16/2020 5:30pm - Story 1 Complete
 * 12/16/2020 6:30pm - Story 2 Complete - single book view
+* 12/23/2020 2:30pm - Story 3 Complete - book saving + details view
 
 ## Credits and Collaborations
 
 ### Resources
 * https://www.w3schools.com/tags/att_input_type_radio.asp
 * https://developers.google.com/books/docs/v1/using
+* https://www.w3schools.com/sql/sql_min_max.asp
 * 
 
 ## Time Estimates
@@ -92,6 +94,15 @@ PORT = 3001
 * Finish time: 6:30
 * Actual time needed to complete: 30 min
 
+## Number and name of feature: Story 3: Save & Display Details
+* Estimate of time needed to complete: 1 hr
+* Start time: 6:00
+* Finish time: 6:30
+* Start time: 2:00
+* Finish time: 4:30
+* Start time: 1:15
+* Finish time: 1:45
+* Actual time needed to complete: 4 hours
 
 
 
@@ -102,3 +113,7 @@ This week, you and your partner(s) will implement a basic full-stack application
 Today’s portion of the application involves requesting books from the API. The client can submit a form to search for a book by title or author, and the search results will then be rendered as a list in the browser.
 
 Your entire application will be deployed on Heroku.
+
+
+## API URL Sample:
+https://www.googleapis.com/books/v1/volumes?q=intitle:sometimes%20a%20great%20notion

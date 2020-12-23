@@ -7,17 +7,28 @@
 </head>
 <body>
     <h1>Search Results</h1>
-    <ul>
         <% bookSearchArray.forEach(book =>{ %>
-            <li>
-                <h2><%=book.title%> </h2>
+            <form action="/books" method="POST">
+                <h2><%=book.title%></h2>
                 <h2><%=book.authors%></h2>
-                <img src="<%=book.imageUrl%>" alt="book cover">
+                <img src="<%=book.image_url%>" alt="book cover">
                 <p><%=book.description%></p>
-            </li>
-            
+                <input type="hidden" name="title" value="<%=book.title%>">
+                <input type="hidden" name="authors" value="<%=book.authors%>">
+                <input type="hidden" name="image_url" value="<%=book.imageUrl%>">
+                <input type="hidden" name="description" value="<%=book.description%>">
+                <input type="hidden" name="isbn" value="<%=book.isbn%>">
+                <button>Add to Favorites</button>
+            </form>
         <%})%>
-        
-    </ul>
 </body>
 </html>
+
+<!-- CREATE TABLE books (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    authors VARCHAR(255),
+    description TEXT,
+    image_url TEXT,
+    isbn VARCHAR(255)
+) -->
