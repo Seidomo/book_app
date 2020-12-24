@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail</title>
 </head>
+
 <body>
-        <li>
-            <h2><%=book.title%> </h2>
-            <h2><%=book.authors%></h2>
-            <img src="<%=book.image_url%>" alt="book cover">
-            <p><%=book.description%></p>
-        </li>
+    <li>
+        <h2>
+            <%=book.title%>
+        </h2>
+        <h2>
+            <%=book.authors%>
+        </h2>
+        <img src="<%=book.image_url%>" alt="book cover">
+        <p>
+            <%=book.description%>
+        </p>
+        <p>
+            <%=book.isbn%>
+
+            <form action="/books/edit/<%=book.id%>">
+                <input type="hidden" name="title" value="<%=book.id%>">
+                <input type="submit" value="Edit Book Details" />
+            </form>
+        </p>
+    </li>
+
 </body>
+
 </html>
