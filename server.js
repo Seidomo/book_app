@@ -10,7 +10,7 @@ const pg = require('pg');
 const PORT = process.env.PORT || 3001;
 const DATABASE_URL = process.env.DATABASE_URL;
 const client = new pg.Client(DATABASE_URL);
-
+const methodOverride = require('method-override');
 
 
 
@@ -26,15 +26,47 @@ app.set('view engine', 'ejs');
 
 
 
-
+app.use(methodOverride('_method')); 
 app.get('/', homePage);
 app.get('/hello', sayingHello);
 app.get('/searches/new', newSearch);
 app.get('/books/:id', bookDetails);
 app.post('/searches/new', searching);
 app.post('/books', saveBooks);
+app.get('/books/edit/:id', bookEdit);
+app.put('/books/saveedit', saveEdit);
 
 
+
+
+
+function saveEdit(req, res) {
+    console.log(req.body); 
+        const saveBookID = req.body.id;
+        const saveBookTitle = req.body.title;
+        const saveBookAuthors = req.body.authors;
+        const saveBookDescription = req.body.description;
+        const saveBookImageUrl = req.body.image_url;
+        const saveBookISBN = req.body.isbn;
+    client.query(
+            'UPDATE books SET title=$2, authors=$3, description=$4, image_url=$5, isbn=$6 WHERE id=$1 RETURNING id',
+            [saveBookID, saveBookTitle, saveBookAuthors, saveBookDescription, saveBookImageUrl, saveBookISBN]
+        )
+            .then((result) => {
+                const editBookID = result.rows[0].id;
+                res.redirect(`/books/${editBookID}`);
+            });
+    }
+
+
+function bookEdit(req, res){
+    console.log(req.params.id);
+    client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
+          .then(result => {
+              let booksInDetail = result.rows[0];
+              res.render('pages/books/edit', {book : booksInDetail });
+          })
+}
 
 
 function homePage(req, res) {
@@ -64,9 +96,6 @@ function bookDetails(req, res){
               let booksInDetail = result.rows[0];
               res.render('pages/books/detail', {book : booksInDetail });
           })
-
-    
-
 }
 
 

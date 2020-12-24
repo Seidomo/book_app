@@ -31,6 +31,10 @@ PORT = 3001
 * 12/16/2020 6:30pm - Story 2 Complete - single book view
 * 12/23/2020 2:30pm - Story 3 Complete - book saving + details view
 
+### Lab 13
+* 12/16/2020 6:15pm - Story 1 Complete
+
+
 ## Credits and Collaborations
 
 ### Resources
@@ -79,7 +83,7 @@ PORT = 3001
 * Estimate of time needed to complete: 2hr
 * Start time: 4:30
 * Finish time: 8:30
-* Actual time needed to complete: 
+* Actual time needed to complete: 4
 
 ## Lab 12
 ## Number and name of feature: Story 1: Database
@@ -104,6 +108,18 @@ PORT = 3001
 * Finish time: 1:45
 * Actual time needed to complete: 4 hours
 
+## Number and name of feature: Story 3: Layout Folder + Callbacks
+* Estimate of time needed to complete: 5min
+* Start time: 2:40
+* Finish time: 2:45
+* Actual time needed to complete: 5 min (was already complete)
+
+## Lab 13
+## Number and name of feature: Story 1: Update Details
+* Estimate of time needed to complete: 3 hours
+* Start time: 3:00
+* Finish time: 6:15
+* Actual time needed to complete: 3 hours
 
 
 ## Assignment Overview
