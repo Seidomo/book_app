@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Searched Books</title>
 </head>
+
+<header>
+    <a href="/"> Favorites </a>
+    <a href="/searches/new"> Search for Books </a>
+</header>
+
 <body>
     <h1>Search Results</h1>
-        <% bookSearchArray.forEach(book =>{ %>
-            <form action="/books" method="POST">
-                <h2><%=book.title%></h2>
-                <h2><%=book.authors%></h2>
-                <img src="<%=book.image_url%>" alt="book cover">
-                <p><%=book.description%></p>
-                <input type="hidden" name="title" value="<%=book.title%>">
-                <input type="hidden" name="authors" value="<%=book.authors%>">
-                <input type="hidden" name="image_url" value="<%=book.imageUrl%>">
-                <input type="hidden" name="description" value="<%=book.description%>">
-                <input type="hidden" name="isbn" value="<%=book.isbn%>">
-                <button>Add to Favorites</button>
-            </form>
+    <% bookSearchArray.forEach(book=>{ %>
+        <form action="/books" method="POST">
+            <h2>
+                <%=book.title%>
+            </h2>
+            <h2>
+                <%=book.authors%>
+            </h2>
+            <img src="<%=book.image_url%>" alt="book cover">
+            <p>
+                <%=book.description%>
+            </p>
+            <input type="hidden" name="title" value="<%=book.title%>">
+            <input type="hidden" name="authors" value="<%=book.authors%>">
+            <input type="hidden" name="image_url" value="<%=book.image_url%>">
+            <input type="hidden" name="description" value="<%=book.description%>">
+            <input type="hidden" name="isbn" value="<%=book.isbn%>">
+            <button>Add to Favorites</button>
+        </form>
         <%})%>
 </body>
+
 </html>
 
 <!-- CREATE TABLE books (

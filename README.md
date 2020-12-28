@@ -33,6 +33,7 @@ PORT = 3001
 
 ### Lab 13
 * 12/16/2020 6:15pm - Story 1 Complete
+* 12/27/2020 11:45pm - Story 2 Complete
 
 
 ## Credits and Collaborations
@@ -120,6 +121,12 @@ PORT = 3001
 * Start time: 3:00
 * Finish time: 6:15
 * Actual time needed to complete: 3 hours
+
+## Number and name of feature: Story 2: Delete
+* Estimate of time needed to complete: 2 hours
+* Start time: 9:30
+* Finish time: 11:45
+* Actual time needed to complete: 2 hours 15 min
 
 
 ## Assignment Overview

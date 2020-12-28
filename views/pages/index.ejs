@@ -15,10 +15,26 @@
     <ul>
         <% nsBooks.forEach(book =>{ %>
             <li>
-                <h2><%=book.title%> </h2>
-                <h2><%=book.authors%></h2>
+                <h2>
+                    <%=book.title%>
+                </h2>
+                <h2>
+                    <%=book.authors%>
+                </h2>
                 <img src="<%=book.image_url%>" alt="book cover">
-                <p><%=book.description%></p>
+    
+                <p>
+                    <%=book.isbn%>
+        
+                        <form action="/books/edit/<%=book.id%>">
+                            <input type="hidden" name="title" value="<%=book.id%>">
+                            <input type="submit" value="Edit Book Details">
+                        </form>
+                        <form id="delete" action="/delete?_method=DELETE" method="POST">
+                            <input type="hidden" name="id" value="<%=book.id%>">
+                            <input type="submit" value="Delete from Favorites">
+                        </form>
+                </p>
             </li>
         <%})%>
         

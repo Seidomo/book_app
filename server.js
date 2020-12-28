@@ -26,7 +26,7 @@ app.set('view engine', 'ejs');
 
 
 
-app.use(methodOverride('_method')); 
+app.use(methodOverride('_method'));
 app.get('/', homePage);
 app.get('/hello', sayingHello);
 app.get('/searches/new', newSearch);
@@ -35,51 +35,55 @@ app.post('/searches/new', searching);
 app.post('/books', saveBooks);
 app.get('/books/edit/:id', bookEdit);
 app.put('/books/saveedit', saveEdit);
+app.delete('/delete', deleteBook);
 
 
-
+function deleteBook(req, res) {
+    return client.query('DELETE FROM books WHERE id=$1', [req.body.id])
+    .then(() => res.redirect('/'));
+}
 
 
 function saveEdit(req, res) {
-    console.log(req.body); 
-        const saveBookID = req.body.id;
-        const saveBookTitle = req.body.title;
-        const saveBookAuthors = req.body.authors;
-        const saveBookDescription = req.body.description;
-        const saveBookImageUrl = req.body.image_url;
-        const saveBookISBN = req.body.isbn;
+/*     console.log(req.body); */
+    const saveBookID = req.body.id;
+    const saveBookTitle = req.body.title;
+    const saveBookAuthors = req.body.authors;
+    const saveBookDescription = req.body.description;
+    const saveBookImageUrl = req.body.image_url;
+    const saveBookISBN = req.body.isbn;
     client.query(
-            'UPDATE books SET title=$2, authors=$3, description=$4, image_url=$5, isbn=$6 WHERE id=$1 RETURNING id',
-            [saveBookID, saveBookTitle, saveBookAuthors, saveBookDescription, saveBookImageUrl, saveBookISBN]
-        )
-            .then((result) => {
-                const editBookID = result.rows[0].id;
-                res.redirect(`/books/${editBookID}`);
-            });
-    }
+        'UPDATE books SET title=$2, authors=$3, description=$4, image_url=$5, isbn=$6 WHERE id=$1 RETURNING id',
+        [saveBookID, saveBookTitle, saveBookAuthors, saveBookDescription, saveBookImageUrl, saveBookISBN]
+    )
+        .then((result) => {
+            const editBookID = result.rows[0].id;
+            res.redirect(`/books/${editBookID}`);
+        });
+}
 
 
-function bookEdit(req, res){
-    console.log(req.params.id);
+function bookEdit(req, res) {
+/*     console.log(req.params.id); */
     client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
-          .then(result => {
-              let booksInDetail = result.rows[0];
-              res.render('pages/books/edit', {book : booksInDetail });
-          })
+        .then(result => {
+            let booksInDetail = result.rows[0];
+            res.render('pages/books/edit', { book: booksInDetail });
+        })
 }
 
 
 function homePage(req, res) {
     client.query('SELECT * FROM books')
-          .then(result => {
-              let savedBooks = result.rows;
-/*               console.log(savedBooks); */
-               res.render('pages/index.ejs',{nsBooks: savedBooks});
-            })
+        .then(result => {
+            let savedBooks = result.rows;
+            console.log(savedBooks);
+            res.render('pages/index.ejs', { nsBooks: savedBooks });
+        })
 }
 
 
-function sayingHello(req, res){
+function sayingHello(req, res) {
     res.render('pages/index.ejs');
 }
 
@@ -89,13 +93,13 @@ function newSearch(req, res) {
 }
 
 
-function bookDetails(req, res){
-    console.log(req.params.id);
+function bookDetails(req, res) {
+/*     console.log(req.params.id); */
     client.query('SELECT * FROM books WHERE id=$1', [req.params.id])
-          .then(result => {
-              let booksInDetail = result.rows[0];
-              res.render('pages/books/detail', {book : booksInDetail });
-          })
+        .then(result => {
+            let booksInDetail = result.rows[0];
+            res.render('pages/books/detail', { book: booksInDetail });
+        })
 }
 
 
@@ -112,25 +116,23 @@ function searching(req, res) {
         .then(bookSearchReturn => {
             const bookSearchArray = bookSearchReturn.body.items.map(instanceBook => new Book(instanceBook));
             res.render('pages/searches/show', { bookSearchArray: bookSearchArray })
-/*             console.log(bookSearchArray); */
         })
 }
 
 
 function saveBooks(req, res) {
-/*     console.log(req.body); */
     const bookTitle = req.body.title;
     const bookAuthors = req.body.authors;
     const bookDescription = req.body.description;
     const bookImageUrl = req.body.image_url;
+    console.log(bookImageUrl);
     const bookISBN = req.body.isbn;
-client.query(
+    client.query(
         'INSERT INTO books (title, authors, description, image_url, isbn) VALUES ($1, $2, $3, $4, $5) RETURNING id;',
         [bookTitle, bookAuthors, bookDescription, bookImageUrl, bookISBN]
     )
         .then((result) => {
             const newestID = result.rows[0].id;
-            console.log(newestID); 
             res.redirect(`/books/${newestID}`);
         });
 }
@@ -143,7 +145,6 @@ function Book(books) {
     /////// got this from the code review /////
     this.image_url = books.volumeInfo.imageLinks ? books.volumeInfo.imageLinks.thumbnail : 'https://i.imgur.com/J5LVHEL.jpg';
     this.isbn = 'ISBN not found';
- /*    this.isbn = (books.volumeInfo.industryIdentifiers[0].type + ': ' + books.volumeInfo.industryIdentifiers[0].identifier) ? 'ISBN not found' : 'ISBN not found'; */
 }
 
 
