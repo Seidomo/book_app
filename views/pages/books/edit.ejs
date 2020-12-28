@@ -7,13 +7,18 @@
     <title>Detail</title>
 </head>
 
+<header>
+    <a href="/"> Favorites </a>
+    <a href="/searches/new"> Search for Books </a>
+</header>
+
 <body>
         <form action="/books/saveedit?_method=PUT" method="POST">
             <img src="<%=book.image_url%>" alt="book cover">
             <input type="hidden" name="id" value="<%=book.id%>">
             <input type="text" name="title" value="<%=book.title%>">
             <input type="text" name="authors" value="<%=book.authors%>">
-            <input type="text" name="image_url" value="<%=book.imageUrl%>">
+            <input type="hidden" name="image_url" value="<%=book.image_url%>">
             <input type="text" name="description" value="<%=book.description%>">
             <input type="text" name="isbn" value="<%=book.isbn%>">
             <button>Save Edits</button>
